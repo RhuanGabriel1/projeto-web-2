@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/RhuanGabriel1/projeto-web-2/issues"
   },
-  "homepage": "https://github.com/RhuanGabriel1/projeto-web-2#readme"
+  "homepage": "https://github.com/RhuanGabriel1/projeto-web-2#readme",
+  "devDependencies": {}
 }
