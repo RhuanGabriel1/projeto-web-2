@@ -3,3 +3,4 @@ const routes = require("./app/routes/routes");
 
 routes.home(server);
 routes.account(server);
+routes.signUp(server);
