@@ -1,6 +1,7 @@
 const { home } = require('../controllers/homeController');
+const { account } = require('../controllers/accountController');
 
-module.exports ={
+module.exports = {
 
     home: (app) => {
         app.get('/', (req, res) => {
@@ -8,4 +9,10 @@ module.exports ={
         });
     },
 
+    account: (app) => {
+        app.get('/account', (req, res) => {
+            account(app, req, res);
+        });
+    },
+    
 }
