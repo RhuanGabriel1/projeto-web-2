@@ -1,6 +1,6 @@
 const { home } = require('../controllers/homeController');
 const { account } = require('../controllers/accountController');
-const { signUp } = require('../controllers/signUpController');
+const { signUp, addUser} = require('../controllers/signUpController');
 
 module.exports = {
 
@@ -21,6 +21,13 @@ module.exports = {
             signUp(app, req, res);
         });
     },
+
+    addUser: (app) =>{
+        app.post('signUp/addUser', (req, res)=>{
+            let user = req.body;
+            res.render('signUpView.ejs', {user: user, errors: errors});
+        });
+    }
 
 
 }

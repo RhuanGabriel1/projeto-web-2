@@ -48,7 +48,7 @@
                 <h3 class='las la-lock'><span>Sign Up</span></h3>
                 <hr />
                 <h4>E-mail: </h4>
-                <input type="text" placeholder='E-mail...'/>
+                <input type="text" placeholder='E-mail...' value=<%=user.email%>>
                 <h4>Name: </h4>
                 <input type="text" placeholder='Name...'/>
                 <h4>Password: </h4>
@@ -57,7 +57,7 @@
                 <h4>Confirm password: </h4>
                 <input type="password" placeholder='Confirm password...'/>
                 <br />
-                <button>Sign up</button>
+                <button action="signUp/addUser" method= "post">Sign up</button>
                 <br />
             </div>
             <div class="create-container">
