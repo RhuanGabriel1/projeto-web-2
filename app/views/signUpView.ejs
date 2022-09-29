@@ -47,18 +47,20 @@
                 <br />
                 <h3 class='las la-lock'><span>Sign Up</span></h3>
                 <hr />
-                <h4>E-mail: </h4>
-                <input type="text" placeholder='E-mail...' value=<%=user.email%>>
-                <h4>Name: </h4>
-                <input type="text" placeholder='Name...'/>
-                <h4>Password: </h4>
-                <input type="password" placeholder='Password...'/>
-                <br />
-                <h4>Confirm password: </h4>
-                <input type="password" placeholder='Confirm password...'/>
-                <br />
-                <button action="signUp/addUser" method= "post">Sign up</button>
-                <br />
+                <form class="form" action="/signUp/addUser" method="post">
+                    <h4>E-mail: </h4>
+                    <input type="text" name="email" placeholder="E-mail..." value= "<%=user.email %>">
+                    <h4>Name: </h4>
+                    <input type="text" name="name" placeholder="Name..." value= "<%=user.name %>" >
+                    <h4>Password: </h4>
+                    <input type="password" name="password" placeholder="Password..." value= "<%=user.password %>">
+                    <br />
+                    <h4>Confirm password: </h4>
+                    <input type="password" name="confirmpassword" placeholder='Confirm password...'/>
+                    <br />
+                    <button type="submit" value="Sign up" >Sign up</button>
+                    <br />
+                </form>
             </div>
             <div class="create-container">
                 <span>Já tem uma conta? <a href="/account"> Log In </a> </a></span>

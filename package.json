@@ -5,7 +5,9 @@
     "express-session": "^1.17.3",
     "express-validator": "^6.14.2",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
+    "toastify-js": "^1.12.0",
     "winston": "^3.8.2"
   },
   "name": "projeto-web-2",

@@ -1,7 +1,8 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
+const database = 'biblioteca';
 const host = 'localhost';
 const user = 'root';
-const password = 'gabi1201';
+const password = 'root';
 
 module.exports = () => {
     return dbConst = mysql.createConnection({
@@ -11,3 +12,4 @@ module.exports = () => {
         database:database
  });
  };
+
