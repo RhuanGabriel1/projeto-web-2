@@ -1,4 +1,5 @@
 let express = require('express');
+let expressSession = require('express-session');
 
 let app = express();
 let port = process.env.port ||3000;
@@ -9,6 +10,12 @@ app.use(express.static('./public/'));
 app.set("views", "./app/views");
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use(expressSession({
+    secret: 'senhasecreta',
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.listen(port, () =>{
     console.log('Servidor rodando com express na porta', port);

@@ -2,7 +2,6 @@ const dbConnection = require('../../config/dbConnection')
 const  logger  = require('../logger/winston');
 const {addUser} = require('../models/signUpModel');
 
-
 module.exports.signUp = (app, req, res) => {
     res.render('signUpView.ejs', {errors: {}, user: {}});
 }

@@ -1,11 +1,11 @@
 const { home } = require('../controllers/homeController');
 const { account } = require('../controllers/accountController');
 const { signUp, addUser} = require('../controllers/signUpController');
+const { authenticateUser } = require('../controllers/logInController');
 const {check, validationResult} = require('express-validator');
 const  logger  = require('../logger/winston');
 
 module.exports = {
-
     home: (app) => {
         app.get('/', (req, res) => {
             home(app, req, res);
@@ -40,5 +40,12 @@ module.exports = {
         });
     },
 
-
+    authenticateUser: (app) =>{
+        app.post('/authUser',[
+            check('email').isEmail().normalizeEmail().withMessage('O email deve ser válido')
+        ], (req, res) => {
+            // const user = req.body;
+            authenticateUser(app, req, res);
+        }); 
+    }
 }

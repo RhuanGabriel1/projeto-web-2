@@ -5,3 +5,4 @@ routes.home(server);
 routes.account(server);
 routes.signUp(server);
 routes.addUser(server);
+routes.authenticateUser(server);

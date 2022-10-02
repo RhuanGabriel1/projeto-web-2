@@ -46,14 +46,15 @@
                 <h1 class='las la-book'><span>Biblioteca-IF<span class='span-color'></h1>
                 <br />
                 <h3 class='las la-lock'><span>Login</span></h3>
-                <hr />
-                <h4>E-mail: </h4>
-                <input type="text" placeholder='E-mail...'/>
-                <h4>Password: </h4>
-                <input type="password" placeholder='Password...'/>
-                <br />
-                <button>Log In</button>
-                <br />
+                <form class="form" action="/authUser" method="post">
+                    <h4>E-mail: </h4>
+                    <input type="text" name="email" placeholder="E-mail..." value= "<%=user.email %>">
+                    <h4>Password: </h4>
+                    <input type="password" name="password" placeholder="Password..." value= "<%=user.password %>">
+                    <br />
+                    <button type="submit" value="Log in" >Log In</button>
+                    <br />
+                </form>
             </div>
             <div class="create-container">
                 <span>Não tem uma conta?<a href="/signUp"> Sign Up </a> </span>
