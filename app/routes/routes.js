@@ -31,19 +31,20 @@ module.exports = {
             check('name').isLength({min:3, max:20}).withMessage('Nome deve ter no mínimo 3 e no máximo 25 caracteres'),
             check('password').isLength({min:5, max:20}).withMessage('Senha deve ter no mínimo 5 no máximo 25 caracteres'),
             check('confirmpassword').custom((value, { req }) =>{
-                console.log(req.body.password);
-                console.log(value);
                 if(value!==req.body.password){
                     console.log("Senhas devem ser iguais ");
                     return false;
                 }
-                console.log('return true');
                 return true;
             })
         ], (req, res)=>{
                 const withErrors = validationResult(req);
+                let user = req.body;
                 if(!withErrors.isEmpty()){
                     console.log("Deu erro!");
+                    let errors = withErrors.array();
+                    // res.render('signUpView.ejs', {errors: errors, user: user});
+                    // signUp(app, req, res);
                     return;
                 }
             addUser(app, req, res);
@@ -54,6 +55,15 @@ module.exports = {
         app.post('/authUser',[
             check('email').isEmail().normalizeEmail().withMessage('O email deve ser válido')
         ], (req, res) => {
+            const withErrors = validationResult(req);
+            const user = req.body;
+            if (!withErrors.isEmpty()){
+                console.log("Deu erro!");
+                let errors = withErrors.array();
+                //  res.render('loginInView.ejs', {errors: {}, user: {}});
+                // account(app, req, res);
+                return;
+            }
             authenticateUser(app, req, res);
         }); 
     }

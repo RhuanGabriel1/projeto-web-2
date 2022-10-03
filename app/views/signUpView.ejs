@@ -42,6 +42,18 @@
         </header>
 
         <main>
+            <section>
+                <% if(errors) { %>
+                    <ul>
+                        <% for(let i = 0; i < errors.length; i++){ %>
+                            <li>
+                                <%= errors[i].msg %>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } %>
+            </section>
+            
             <div class="login-container">
                 <h1 class='las la-book'><span>Biblioteca-IF<span class='span-color'></h1>
                 <br />

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Home</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <link rel="stylesheet" type="text/css" href="/style.css" /> 
 
 </head>
 
@@ -40,7 +40,21 @@
         </header>
 
         <main>
-            
+           <h1>Biblioteca-IF</h1> 
+           <% for (let i=0; i<livros.length; i++) { %>
+            <div class="card">
+                <img src="<%= livros[i].urlimagem %>" class="card-image" alt="<%= livros[i].nome %>">
+                <div class="card-body">
+                        <h5 class="card-title">
+                            <%= livros[i].nome %>
+                        </h5>
+                    <p class="card-text">
+                        <%= livros[i].artista %>
+                    </p>
+                </div>
+            </div>
+            <hr />
+        <% } %>
         </main>
 
         <footer>
