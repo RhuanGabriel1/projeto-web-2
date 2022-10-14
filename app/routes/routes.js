@@ -66,5 +66,41 @@ module.exports = {
             }
             authenticateUser(app, req, res);
         }); 
+    },
+
+    insertBook: (app) => {
+        app.get('/inserilivro', function (req, res) {
+            res.render('insertBook.ejs', { errors: {}, book: {} });
+        });
+    },
+    savebook: (app) => {
+        app.post('/livro/salvar', [
+
+            check('nome').isLength({ min: 1, max: 100 }).withMessage('Nome deve ter no mínimo 5 caracteres'),
+            check('autor').isLength({ min: 1, max: 250 }).withMessage('descrição deve ter no mínimo 5 caracteres'),
+            check('ano').isLength({ min: 0, max: 2100 }).isNumeric().withMessage('Ano deve ser numérico e conter 4 números.'),
+            check('urlimagem').isURL().withMessage('URL da imagem deve conter um link')
+
+
+        ], (req, res) => {
+            const err = validationResult(req);
+            painting = req.body;
+            let operation = req.query.op
+            console.log("rota salvar");
+            if (!err.isEmpty()) {
+                let errors = err.array();
+                res.render('insertBook.ejs', { errors: errors, painting: painting});
+                return;
+            } else{
+                console.log(operation);
+                switch (operation) {
+                  case 'i': addBookController(app, req, res);
+                  case 'c': changeBookController(app, req, res);
+                  default: console.log('Operação não prevista');
+                }
+            }
+        });
+        
     }
+
 }

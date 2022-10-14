@@ -1,6 +1,6 @@
 const dbConnection = require('../../config/dbConnection')
 const  logger  = require('../logger/winston');
-const { getBooks } = require('../models/homeModel')
+const { getBooks, getBook  } = require('../models/homeModel')
 
 module.exports.home = (app, req, res) => {
     const dbConn = dbConnection();
@@ -12,4 +12,15 @@ module.exports.home = (app, req, res) => {
         }
         res.render('homeView.ejs', {livros: result});
     });
+
+module.exports.changeFormPaintingController = (app, req, res) => {
+        console.log('Formulario para alteração de livro');
+        let bookId = req.query.idobra;
+        dbConn = dbConnection();
+        getBook(bookId, dbConn, (error, result) => {
+          console.log(error);
+          let book = result[0];
+          res.render('insertBook', { book: book, errors: error , op: 'c'});
+        });
+      }; 
 }

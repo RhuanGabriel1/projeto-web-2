@@ -6,3 +6,4 @@ routes.account(server);
 routes.signUp(server);
 routes.addUser(server);
 routes.authenticateUser(server);
+routes.insertBook(server);

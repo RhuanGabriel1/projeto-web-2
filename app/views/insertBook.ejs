@@ -41,21 +41,14 @@
         </header>
 
         <main>
-           <h1>Biblioteca-IF</h1> 
-           <% for (let i=0; i<livros.length; i++) { %>
-            <div class="card">
-                <img src="<%= livros[i].urlimagem %>" class="card-image" alt="<%= livros[i].nome %>">
-                <div class="card-body">
-                        <h5 class="card-title">
-                            <%= livros[i].nome %>
-                        </h5>
-                    <p class="card-text">
-                        <%= livros[i].artista %>
-                    </p>
-                </div>
-            </div>
-            <hr />
-        <% } %>
+            <h1>Formulário para inclusão de Livro</h1>
+            <form action="/livro/salvar" method="post">
+                <input type="text" name="nome" placeholder="Digite o nome do livro" >
+                <input type="number" name="ano" placeholder="Digite o ano do livro" >
+                <input type="text" name="artista" placeholder="Digite o nome do autor ou autora do livro" >
+                <input type="text" name="urlimagem" placeholder="Digite a url do livro">
+                <input type="submit" value="enviar">
+            </form>
         </main>
 
         <footer>
