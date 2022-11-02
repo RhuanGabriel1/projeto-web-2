@@ -14,7 +14,7 @@ module.exports = class Books{
             }
             res.json(books);
         } catch (error) {
-            console.log('getAllBooks error -> ${error}');
+            console.log(`getAllBooks error -> ${error}`);
             res.status(500).json({error:error});
         }
     }

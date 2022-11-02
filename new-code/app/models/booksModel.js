@@ -10,5 +10,4 @@ module.exports = class BookModel {
         console.log(books);
         return books;
     }
-    
 }
