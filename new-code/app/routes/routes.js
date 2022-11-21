@@ -6,6 +6,6 @@ module.exports = {
         app.get('/api/books', Books.apiGetAllBooks);
     },
     addBook: (app) => {
-        app.post('api/books', Books.addBook);
+        app.post('/api/books', Books.addBook);
     },
 }

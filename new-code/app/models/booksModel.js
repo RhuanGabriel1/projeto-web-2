@@ -14,7 +14,7 @@ module.exports = class BookModel {
     static async addBook(data){
         console.log(`addBook -> ${data}`);
         try {
-            const newBook = {nome: data.nome, ano: ano.nome, autor: data.autor, link: data.link}
+            const newBook = {nome: data.nome, ano: data.ano, autor: data.autor, link: data.link}
             const addedBook = await client.db("projeto-web").collection("books").insertOne(newBook);
             console.log(`Novo livro inserido com o id ${addedBook.insertedId}`);
             return addedBook;
