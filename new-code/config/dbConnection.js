@@ -3,6 +3,6 @@ require('dotenv').config();
 
 console.log("Olha -> "+process.env.mongoUri);
 
-const client = new MongoClient(process.env.mongoUri);
+const client = new MongoClient("mongodb+srv://root:luana123@cluster0.lcgbwwd.mongodb.net/?retryWrites=true&w=majority");
 
 module.exports = client;

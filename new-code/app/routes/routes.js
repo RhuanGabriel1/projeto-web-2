@@ -8,4 +8,8 @@ module.exports = {
     addBook: (app) => {
         app.post('/api/books', Books.addBook);
     },
+    getBookById: (app) => {
+        app.get('/api/books/:id', Books.getBookById);
+    },
+   
 }
