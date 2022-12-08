@@ -47,10 +47,10 @@ module.exports = class Books {
         }
 
     }
-    static async getBookById(req, res) {
+    static async getBook(req, res) {
         try {
             const booksId = req.params.id;
-            const book = await BookModel.getBookById(booksId);
+            const book = await BookModel.getBook(booksId);
             if (!book)
                 return res.status(404).json(`Não existe book cadastrada com o id ${booksId}.`);
             else
@@ -59,5 +59,20 @@ module.exports = class Books {
             console.log(`[Controller - get book by id error] ${error}`);
             return res.status(500).json(error);
         }
+
     }
-}
+    static async deleteBook(req, res) {
+        try {
+            //Verifica se livro existe
+            const bookId = req.params.id;
+            const book = await BookModel.deleteBook(bookId);
+            if (!book) return res.status(404).json(`Não existe livro cadastrado com o id ${bookId}.`);
+
+            const deleteBook = await BookModel.deleteBook(req.params.id);
+            return res.status(200).json(deleteBook);
+
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    }
+} 

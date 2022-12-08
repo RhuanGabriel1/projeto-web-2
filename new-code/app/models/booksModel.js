@@ -22,7 +22,7 @@ module.exports = class BookModel {
             console.log(`[bookService] Error: ${error}`);
         }
     }
-    static async getBookById(bookId) {
+    static async getBook(bookId) {
         console.log(`[estou no BookModel , getById] ${bookId}`);
         bookId = new ObjectId(bookId);
         const book = await client.db("projeto-web").collection("books").findOne({
@@ -30,5 +30,16 @@ module.exports = class BookModel {
         });
         return book;
     }
-
+    static async deleteBook(bookId) {
+        console.log(`[Book Model - delete Book] ${bookId}`);
+        const query = {
+            _id: new ObjectId(bookId)
+        };
+        try {
+            return await client.db("projeto-web").collection("books").deleteOne(query);
+        } catch (error) {
+            console.log(`[bookService] Error: ${error}`);
+        }
+    
+}
 }
