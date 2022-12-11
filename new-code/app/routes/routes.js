@@ -1,5 +1,7 @@
 const app = require('../../config/server');
 const Books = require('../controllers/booksController');
+const authMidleware = require('../midlewares/auth');
+
 
 module.exports = {
     getAllBooks: (app) => {
@@ -24,4 +26,8 @@ module.exports = {
     loanRequisityBook: () =>{
         app.put('/api/books/loan/requisity/:id', Books.loanRequisityBook);
     },
+    authUser: (app) => {
+        app.post('/api/books/auth', Books.authUser);
+    }
+    
 }

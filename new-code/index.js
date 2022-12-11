@@ -8,3 +8,4 @@ routes.deleteBook(app);
 routes.loanBook(app);
 routes.devolutionBook(app);
 routes.loanRequisityBook(app);
+routes.authUser(app);
