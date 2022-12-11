@@ -5,3 +5,6 @@ routes.getAllBooks(app);
 routes.addBook(app);
 routes.getBook(app);
 routes.deleteBook(app);
+routes.loanBook(app);
+routes.devolutionBook(app);
+routes.loanRequisityBook(app);
