@@ -62,9 +62,9 @@ module.exports = class BookModel {
         const book = await client
         .db("projeto-web")
         .collection("books")
-        .findOne({ _id: new ObjectId(Id) });
+        .findOne({ _id: new ObjectId(bookId) });
 
-         if (!book) return null;
+         if(!book) return null;
          
          return await client
         .db("projeto-web")
@@ -72,24 +72,24 @@ module.exports = class BookModel {
         .updateOne(
           { _id: new ObjectId(bookId) },
           {
-            $set: {
-                requisitadoPor: `Requisitado por ${Obj.requisitadoPor}`,
+            $push: {
+                requisitadoPor: Obj,
             },
           }
         );
 
     } catch (error) {
-        
+      console.log(`[bookService] Error: ${error}`);
     }
   }
 
   static async loanBook(bookId, Obj) {
-    console.log(`PUT BOOK by: ${Id}`);
+    console.log(`PUT BOOK by: ${bookId}`);
     try {
       const book = await client
         .db("projeto-web")
         .collection("books")
-        .findOne({ _id: new ObjectId(Id) });
+        .findOne({ _id: new ObjectId(bookId) });
 
       if (!book) return null;
 
@@ -105,7 +105,9 @@ module.exports = class BookModel {
             },
           }
         );
-    } catch (error) {}
+    } catch (error) {
+      console.log(`[bookService] Error: ${error}`);
+    }
   }
 
   static async devolutionBook(bookId) {
@@ -113,7 +115,7 @@ module.exports = class BookModel {
       const book = await client
         .db("projeto-web")
         .collection("books")
-        .findOne({ _id: new ObjectId(Id) });
+        .findOne({ _id: new ObjectId(bookId) });
 
       if (!book) return null;
 
@@ -129,18 +131,21 @@ module.exports = class BookModel {
             },
           },
         );
-    } catch (error) {}
+    } catch (error) {
+      console.log(`[bookService] Error: ${error}`);
+    }
   }
 
   static async removeRequisityBook(bookId, Obj){
-    const book = await client
+    try {
+        const book = await client
         .db("projeto-web")
         .collection("books")
-        .findOne({ _id: new ObjectId(Id) });
+        .findOne({ _id: new ObjectId(bookId) });
 
     if (!book) return null;
 
-    return await client
+   return await client
         .db("projeto-web")
         .collection("books")
         .updateOne(
@@ -151,7 +156,8 @@ module.exports = class BookModel {
             },
           }
         );
+    } catch (error) {
+      console.log(`[bookService] Error: ${error}`);
+    }
   }
-
-  
 };
