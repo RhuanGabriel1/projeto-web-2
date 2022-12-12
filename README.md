@@ -2,7 +2,7 @@
 
 # PROJETO WEB
 
-Url de hospedagem: 
+Url de hospedagem: https://projeto-web-wtcw.vercel.app/api/books
 
 GET -> http://localhost:4000/api/books -> Requisição que traz todas os livros
 
