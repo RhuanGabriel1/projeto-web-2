@@ -140,15 +140,15 @@ module.exports = class Books {
               message: `Email inválido`,
             });
           }
-          if(password==passwordUsers && email==emailUsuário1 
-            || password==passwordUsers && email==emailUsuário2 
-            || password==passwordUsers && email==emailBibliotecario){
+          const isValidUser = password==passwordUsers && (email==emailUsuário1 || email==emailUsuário2 || email==emailBibliotecario)
+          if(!isValidUser){
+            return res.status(401).send({message: `Usuário inválido`});
+            }
             const token = generateToken({
                 id: email,
             });
             return res.send({token});
-          }
-        } catch (error) {
+    } catch (error) {
           res.status(500).json({ error: error });
         }
     }
