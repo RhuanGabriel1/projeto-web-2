@@ -111,6 +111,7 @@ module.exports = class Books {
 
     static async devolutionBook(req, res){
         try {
+            if(req.id!= emailBibliotecario) return res.status(403).json(`Apenas bibliotecários podem fazer a devolução de livro`)
             const book = await Book.devolutionBook(req.params.id);
             if(!book) return res.status(404).json(`Livro ${req.params.id} não encontrado`);
             res.status(200).json(`Livro ${req.params.id} devolvido com sucesso`);
